@@ -1,3 +1,5 @@
+const { assert } = require("chai");
+
 const DappToken = artifacts.require("DappToken")
 const DaiToken = artifacts.require("DaiToken");
 const TokenFarm = artifacts.require("TokenFarm");
@@ -51,4 +53,30 @@ contract("TokenFarm", ([owner, investor]) => {
         assert.equal(balance.toString(), tokens("1000000"))
     })
 
+    describe("Farming tokens", async () => {
+        it("Rewards investors for staking mDai tokens", async () => {
+            let result 
+            
+            result = await daiToken.balanceOf(investor)
+            assert.equal(result.toString(), tokens("100"), "investor Mock Dai wallet balance correct before staking")
+
+            //stake mock dai tokens
+            await daiToken.approve(tokenFarm.address, tokens("100"), {from: investor})
+            await tokenFarm.stateTokens(tokens("100"), {from: investor})
+
+            //check staking result
+            result = await daiToken.balanceOf(investor)
+            assert.equal(result.toString(), tokens("0"), "investor Mock Dai wallet balance correct after staking")
+
+            result = await daiToken.balanceOf(tokenFarm.address)
+            assert.equal(result.toString(), tokens("100"), "Token Farm Mock Dai balance correct after staking")
+            
+            result = await tokenFarm.stakingBalance(investor)
+            assert.equal(result.toString(), tokens("100"), "investor staking balance correct after staking")
+
+            result = await tokenFarm.isStaking(investor)
+            assert.equal(result.toString(), "true", "investor staking status correct after staking")
+
+        })
+    })
 })
