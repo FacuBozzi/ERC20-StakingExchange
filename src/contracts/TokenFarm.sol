@@ -36,7 +36,15 @@ contract TokenFarm {
         isStaking[msg.sender] = true;
     }
 
-    function issueToken() public{
+    function unstakeTokens() public {
+        uint balance = stakingBalance[msg.sender];
+        require(balance > 0, "staking balance cannot be 0");
+        daiToken.transfer(msg.sender, balance);
+        stakingBalance[msg.sender] = 0;
+        isStaking[msg.sender] = false;
+    }
+
+    function issueTokens() public{
         require(msg.sender == owner, "only the owner can call this function");
         for(uint i = 0; i < stakers.length; i++){
             address recipient = stakers[i];
@@ -46,11 +54,4 @@ contract TokenFarm {
                 }
             }
         }
-
-//     function withdrawTokens() public{
-//         for(uint i = 0; i < stakers.length; i++){
-//             if(isStaking[stakers[i]]){
-//                 dappToken.transferFrom(address(this), stakers[i], stakingBalance[stakers[i]]);
-//                 isStaking[stakers[i]] = false;
-//     }
 }
