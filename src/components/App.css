@@ -1,1 +1,44 @@
 /* Styles go here */
+#account{
+    font-size: 0.9rem;
+    color: aliceblue;
+}
+
+.mi-navbar{
+    height: 60px;
+}
+
+.mi-tabla{
+    margin-top: 70px;
+}
+
+html, body {
+    background-color: black;
+    height: 250px;
+}
+
+p{
+    color: aliceblue;
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.main-content{
+    overflow: hidden;
+
+}
+
+#loader{
+    margin-top: 270px;
+    text-align: center;
+    font-size: 2rem;
+}
