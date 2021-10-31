@@ -104,7 +104,8 @@ class App extends Component {
 
   render() {
     let content
-    if(this.state.loading) {
+    //CHANGED THIS.STATE.LOADING TO FALSE SO THAT APP WORKS WITHOUT GANACHE (BUT WONT BE ABLE TO STAKE TOKENS)
+    if(this.state.loading == false) {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
       content = <Main
