@@ -117,7 +117,7 @@ class App extends Component {
     return (
       <div>
         <Navbar account={this.state.account} />
-        <ParticleBackground/>
+        <ParticleBackground />
         <div className="main-content">
           <div className="container-fluid mt-5">
             <div className="row">
