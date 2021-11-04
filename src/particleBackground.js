@@ -6,7 +6,7 @@ export default function ParticleBackground() {
   return (
     <>
         <div id="particles-js">
-            <Particles params={particleConfig}></Particles> 
+            <Particles width="100vw" height="100vh" params={particleConfig}></Particles> 
         </div>
     </>
   );
