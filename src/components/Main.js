@@ -16,8 +16,11 @@ class Main extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>{window.web3.utils.fromWei(this.props.stakingBalance, 'Ether')} mDAI</td>
-              <td>{window.web3.utils.fromWei(this.props.dappTokenBalance, 'Ether')} WLFG</td>
+              <td>0 mDAI</td>
+              <td>0 WLFG</td>
+              {/* below is the actual code using web3 compatible with ganache for the ethereum experience */}
+              {/* <td>{window.web3.utils.fromWei(this.props.stakingBalance, 'Ether')} mDAI</td>
+              <td>{window.web3.utils.fromWei(this.props.dappTokenBalance, 'Ether')} WLFG</td> */}
             </tr>
           </tbody>
         </table>
@@ -36,7 +39,9 @@ class Main extends Component {
               <div>
                 <label className="float-left"><b>Stake Tokens</b></label>
                 <span className="float-right text-muted">
-                  Balance: {window.web3.utils.fromWei(this.props.daiTokenBalance, 'Ether')}
+                  Balance: 0
+                  {/* below is the actual code using web3 compatible with ganache for the ethereum experience
+                  Balance: {window.web3.utils.fromWei(this.props.daiTokenBalance, 'Ether')} */}
                 </span>
               </div>
               <div className="input-group mb-4">
